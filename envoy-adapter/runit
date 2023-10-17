@@ -1,0 +1,4 @@
+#!/bin/sh
+
+echo "The port variable is: $PORT"
+/apigee-remote-service-envoy -c /config.yaml -l $DEBUG

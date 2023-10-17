@@ -1,0 +1,13 @@
+{
+    "operationConfigs": [
+      {
+        "apiSource": "@@ENVOY_CLOUD_RUN_SERVICE@@",
+        "operations": [
+          {
+            "resource": "/"
+          }
+        ]
+      }
+    ],
+    "operationConfigType": "remoteservice"
+}

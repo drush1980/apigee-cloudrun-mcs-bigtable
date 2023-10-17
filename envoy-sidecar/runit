@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "updating config for envoy to $APIGEE_HOST"
+sed -i -e "s/@@APIGEE_HOST@@/$APIGEE_HOST/" /sidecar/envoy.yaml
+
+echo "Last part of envoy config..."
+tail -50 /sidecar/envoy.yaml | head -20
+envoy -c /sidecar/envoy.yaml -l $LOG_LEVEL
