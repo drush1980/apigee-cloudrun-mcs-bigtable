@@ -41,7 +41,7 @@ The sample architecture is shown below.
 the Apigee Envoy Adapter. Once this is done, copy the resulting `config.yaml` file into the `/envoy-adapter`
 directory.
 
-2. Edit `env.sh` and replace with your GCP project ID, region, Apigee [environment](https://cloud.google.com/apigee/docs/api-platform/fundamentals/environments-working-with), and the [environment group](https://cloud.google.com/apigee/docs/api-platform/fundamentals/environmentgroups-working-with) hostname. Then from a terminal, source the `env.sh` file:
+2. Edit `env.sh` and replace with your GCP project ID, region, Apigee [environment](https://cloud.google.com/apigee/docs/api-platform/fundamentals/environments-working-with) (which must be of [type](https://cloud.google.com/apigee/docs/api-platform/fundamentals/environments-overview#environment-types) Intermediate or Comprehensive), and the [environment group](https://cloud.google.com/apigee/docs/api-platform/fundamentals/environmentgroups-working-with) hostname. Then from a terminal, source the `env.sh` file:
 ```bash
 source ./env.sh
 ```
