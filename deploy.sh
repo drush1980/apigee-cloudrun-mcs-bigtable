@@ -22,6 +22,7 @@ fi
 
 sed -i -e "s/@@REGION@@/$REGION/" apigee-envoy-service.yaml
 sed -i -e "s/@@PROJECT@@/$PROJECT/" apigee-envoy-service.yaml
+sed -i -e "s/@@APIGEE_HOST@@/$APIGEE_HOST/" apigee-envoy-service.yaml
 
 echo "Deploying Cloud Run service..."
 gcloud run services replace apigee-envoy-service.yaml
