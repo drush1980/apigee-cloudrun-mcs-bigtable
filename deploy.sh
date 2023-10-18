@@ -22,7 +22,6 @@ fi
 
 sed -i -e "s/@@REGION@@/$REGION/" apigee-envoy-service.yaml
 sed -i -e "s/@@PROJECT@@/$PROJECT/" apigee-envoy-service.yaml
-sed -i -e "s/@@APIGEE_HOST@@/$APIGEE_HOST/" apigee-envoy-service.yaml
 
 echo "Deploying Cloud Run service..."
 gcloud run services replace apigee-envoy-service.yaml
@@ -76,7 +75,7 @@ apigeecli apps create --name $APP_NAME --email sampledev@acme.com --prods bigtab
 export CLIENT_ID=$(apigeecli apps get --name $APP_NAME --org "$PROJECT" --token "$TOKEN" --disable-check | jq ."[0].credentials[0].consumerKey" -r)
 export CLIENT_SECRET=$(apigeecli apps get --name $APP_NAME --org "$PROJECT" --token "$TOKEN" --disable-check | jq ."[0].credentials[0].consumerSecret" -r)
 
-export REMOTE_TOKEN_URL="$APIGEE_HOST/remote-token-bigtable/token"
+export REMOTE_TOKEN_URL="https://$APIGEE_HOST/remote-token-bigtable/token"
 
 echo " "
 echo "Apigee artifacts are successfully deployed!"
