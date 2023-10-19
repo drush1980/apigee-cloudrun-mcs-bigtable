@@ -57,12 +57,12 @@ apigeecli kvms entries create --token $TOKEN --org $PROJECT --env $APIGEE_ENV --
 apigeecli kvms entries create --token $TOKEN --org $PROJECT --env $APIGEE_ENV --map gcp-auth --key GCP.privKeyPem --value "$SA_KEY"
 
 echo "Importing and Deploying GCP Auth Sharedflow..."
-REV=$(apigeecli sharedflows import -f ./gcp-auth-v2.zip --org $PROJECT --token $TOKEN | grep -v 'WARNING' | jq ."revision" -r)
-apigeecli sharedflows deploy --name gcp-auth-v2 --ovr --rev $REV --org $PROJECT --env $APIGEE_ENV --token $TOKEN
+apigeecli sharedflows import -f ./sharedflow --org $PROJECT --token $TOKEN
+apigeecli sharedflows deploy --name gcp-auth-v2 --ovr --org $PROJECT --env $APIGEE_ENV --token $TOKEN
 
 echo "Importing and Deploying modified Remote Token Proxy..."
-REV=$(apigeecli apis import -f ./remote-token-bigtable.zip --org $PROJECT --token $TOKEN | grep -v 'WARNING' | jq ."revision" -r)
-apigeecli apis deploy --wait --name remote-token-bigtable --ovr --rev "$REV" --org "$PROJECT" --env "$APIGEE_ENV" --token "$TOKEN"
+apigeecli apis import -f ./proxy --org $PROJECT --token $TOKEN
+apigeecli apis deploy --wait --name remote-token-bigtable --ovr --org "$PROJECT" --env "$APIGEE_ENV" --token "$TOKEN"
 
 echo "Creating API Product"
 apigeecli products create --name bigtable --displayname "bigtable" --opgrp ./bigtable-product-ops.json --envs "$APIGEE_ENV" --approval auto --quota 10 --interval 1 --unit minute --org "$PROJECT" --token "$TOKEN"
