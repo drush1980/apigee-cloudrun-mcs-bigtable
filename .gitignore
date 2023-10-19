@@ -105,3 +105,4 @@ dist
 
 ### My own ignores
 config.yaml
+.DS_Store
