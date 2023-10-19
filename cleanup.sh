@@ -46,7 +46,7 @@ echo "Deleting KVM..."
 apigeecli kvms delete --token $TOKEN --org $PROJECT --env $APIGEE_ENV --name gcp-auth
 
 echo "Deleting Service Account..."
-gcloud iam service-accounts delete apigee-bigtable
+gcloud iam service-accounts delete apigee-bigtable@$PROJECT.iam.gserviceaccount.com --quiet
 
 echo "Deleting key file..."
 rm ./apigee-bigtable-key.json
