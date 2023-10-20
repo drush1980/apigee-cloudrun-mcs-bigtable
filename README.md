@@ -51,8 +51,7 @@ source ./env.sh
 gcloud artifacts repositories create apigee-cloudrun-mcs-bigtable \
     --repository-format=docker \
     --location=us \
-    --description="Docker images for Apigee Envoy sample" \
-    --immutable-tags
+    --description="Docker images for Apigee Envoy sample"
 ```
 
 4. Execute the following commands to build the Envoy Adapter image:
