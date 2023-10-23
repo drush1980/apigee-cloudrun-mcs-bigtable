@@ -11,4 +11,7 @@ if [ ! -f "./config.yaml" ]; then
     exit
 fi
 
+# modify jwt_provider_key
+sed -i "s/remote-token/remote-token-bigtable/" ./config.yaml
+
 gcloud builds submit --tag us-docker.pkg.dev/$PROJECT/apigee-cloudrun-mcs-bigtable/envoy-adapter:latest
