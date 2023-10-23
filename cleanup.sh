@@ -5,6 +5,11 @@ if [ -z "$PROJECT" ]; then
     exit
 fi
 
+if [ -z "$REGION" ]; then
+    echo "No REGION variable set"
+    exit
+fi
+
 if [ -z "$APIGEE_ENV" ]; then
     echo "No APIGEE_ENV variable set"
     exit
@@ -52,7 +57,7 @@ echo "Deleting key file..."
 rm ./apigee-bigtable-key.json
 
 echo "Deleting Cloud Run service..."
-gcloud run services delete apigee-envoy
+gcloud run services delete apigee-envoy --region $REGION
 
 echo " "
 echo "Cleanup complete. You may wish to also delete build artifacts from Artifact Registry."
